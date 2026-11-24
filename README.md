@@ -7,3 +7,5 @@ uebhfebfbhi# profile
 -　Gemini・VS Code・daisyUI
 #　作った人
 -　peyangfang
+#　工夫したところ
+-　簡潔に一目でわかりやすいプロフィールサイトを作成した。
