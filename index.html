@@ -8,79 +8,92 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-base-200 min-h-screen flex flex-col justify-between">
+<body class="bg-base-200 min-h-screen flex flex-col justify-between overflow-x-hidden">
 
-  <!-- ナビバー -->
-  <header class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">👤 キム</a>
+  <!-- ナビバー（スマホでは2段にして横はみ出しを防止） -->
+  <header class="navbar bg-base-100 shadow-sm sticky top-0 z-50 flex-col sm:flex-row px-2 py-2 sm:px-4 min-h-0 gap-1">
+    <div class="sm:flex-1">
+      <a class="btn btn-ghost btn-sm sm:btn-md text-lg sm:text-xl">👤 キム</a>
     </div>
     <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
-        <li><a href="#about">ひとこと</a></li>
-        <li><a href="#likes">好きなもの</a></li>
-        <li><a href="#learning">学んでいること</a></li>
-        <li><a href="#works">作ったもの</a></li>
+      <ul class="menu menu-horizontal p-0 text-xs sm:text-sm flex-wrap justify-center">
+        <li><a href="#about" class="px-2 py-1 sm:px-3">ひとこと</a></li>
+        <li><a href="#likes" class="px-2 py-1 sm:px-3">好きなもの</a></li>
+        <li><a href="#learning" class="px-2 py-1 sm:px-3">学んでいること</a></li>
+        <li><a href="#works" class="px-2 py-1 sm:px-3">作ったもの</a></li>
       </ul>
     </div>
   </header>
 
   <!-- メインコンテンツ -->
-  <main class="container mx-auto px-4 py-8 space-y-12 max-w-4xl">
+  <main class="container mx-auto px-3 py-4 space-y-6 sm:px-4 sm:py-8 sm:space-y-12 max-w-4xl">
     
     <!-- セクション1: ひとこと -->
-    <section id="about" class="hero bg-base-100 rounded-box shadow-md p-6">
-      <div class="hero-content text-center">
+    <section id="about" class="hero bg-base-100 rounded-box shadow-md p-4 sm:p-6">
+      <div class="hero-content text-center p-2">
         <div class="max-w-md">
-          <div class="avatar placeholder mb-4">
-            <div class="bg-primary text-primary-content rounded-full w-24">
-              <span class="text-3xl font-bold">K</span>
+          <div class="avatar placeholder mb-2 sm:mb-4">
+            <div class="bg-primary text-primary-content rounded-full w-16 sm:w-24">
+              <span class="text-2xl sm:text-3xl font-bold">K</span>
             </div>
           </div>
-          <h1 class="text-3xl font-bold">キム</h1>
-          <p class="py-4 text-lg text-base-content/80">
+          <h1 class="text-2xl sm:text-3xl font-bold">キム</h1>
+          <p class="py-2 sm:py-4 text-base sm:text-lg text-base-content/80">
             AIについて勉強中です。
           </p>
+
+          <!-- 隠しておく段落 -->
+          <p id="more-text" class="hidden pb-3 text-xs sm:text-sm text-base-content/70">
+            プログラミングやWebデザインにも興味があります。休日は美味しい唐揚げを探したり、ドライブに出かけたりしてリフレッシュしています！
+          </p>
+
+          <!-- ボタンエリア（もっと見る・いいね） -->
+          <div class="flex justify-center gap-2 sm:gap-3 mt-1">
+            <button id="more-btn" class="btn btn-primary btn-sm">もっと見る</button>
+            <button id="like-btn" class="btn btn-outline btn-secondary btn-sm">
+              ❤️ いいね <span id="like-count">0</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- セクション2: 好きなもの -->
     <section id="likes">
-      <h2 class="text-2xl font-bold mb-6 text-center">好きなもの</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-6 text-center">好きなもの</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-6">
         <div class="card bg-base-100 shadow-md">
-          <div class="card-body items-center text-center">
-            <div class="text-4xl mb-2">🍗</div>
-            <h3 class="card-title">唐揚げ</h3>
-            <p class="text-sm text-base-content/70">ジューシーでサクサクな唐揚げが好きで、美味しいお店を探しています。</p>
+          <div class="card-body p-4 sm:p-6 items-center text-center">
+            <div class="text-3xl sm:text-4xl mb-1">🍗</div>
+            <h3 class="card-title text-base sm:text-lg">唐揚げ</h3>
+            <p class="text-xs sm:text-sm text-base-content/70">ジューシーでサクサクな唐揚げが好きで、美味しいお店を探しています。</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-md">
-          <div class="card-body items-center text-center">
-            <div class="text-4xl mb-2">✈️</div>
-            <h3 class="card-title">旅行</h3>
-            <p class="text-sm text-base-content/70">新しい場所や文化に触れて、気分転換するのが楽しみの一つです。</p>
+          <div class="card-body p-4 sm:p-6 items-center text-center">
+            <div class="text-3xl sm:text-4xl mb-1">✈️</div>
+            <h3 class="card-title text-base sm:text-lg">旅行</h3>
+            <p class="text-xs sm:text-sm text-base-content/70">新しい場所や文化に触れて、気分転換するのが楽しみの一つです。</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-md">
-          <div class="card-body items-center text-center">
-            <div class="text-4xl mb-2">🚗</div>
-            <h3 class="card-title">ドライブ</h3>
-            <p class="text-sm text-base-content/70">お気に入りの音楽を聴きながら遠出をするのが好きです。</p>
+          <div class="card-body p-4 sm:p-6 items-center text-center">
+            <div class="text-3xl sm:text-4xl mb-1">🚗</div>
+            <h3 class="card-title text-base sm:text-lg">ドライブ</h3>
+            <p class="text-xs sm:text-sm text-base-content/70">お気に入りの音楽を聴きながら遠出をするのが好きです。</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- セクション3: 最近学んでいること -->
-    <section id="learning" class="bg-base-100 rounded-box shadow-md p-8 text-center">
-      <h2 class="text-2xl font-bold mb-6">最近学んでいること</h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        <div class="badge badge-primary badge-lg p-4 text-base">
+    <section id="learning" class="bg-base-100 rounded-box shadow-md p-4 sm:p-8 text-center">
+      <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-6">最近学んでいること</h2>
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
+        <div class="badge badge-primary h-auto py-2 px-3 text-xs sm:text-base">
           🌐 プロフィールサイトの作成
         </div>
-        <div class="badge badge-secondary badge-lg p-4 text-base">
+        <div class="badge badge-secondary h-auto py-2 px-3 text-xs sm:text-base">
           💻 VS Codeの使い方
         </div>
       </div>
@@ -88,14 +101,14 @@
 
     <!-- セクション4: この授業で作ったもの -->
     <section id="works">
-      <h2 class="text-2xl font-bold mb-6 text-center">この授業で作ったもの</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-6 text-center">この授業で作ったもの</h2>
       <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="flex items-center gap-3">
+        <div class="card-body p-4 sm:p-6">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3">
             <span class="badge badge-accent">第5回</span>
-            <h3 class="card-title">daisyUI の自己紹介カード</h3>
+            <h3 class="card-title text-base sm:text-lg">daisyUI の自己紹介カード</h3>
           </div>
-          <p class="mt-2 text-base-content/80">
+          <p class="mt-2 text-xs sm:text-sm sm:text-base text-base-content/80">
             授業の第5回課題で作成したカードです。コンポーネントの組み立てとレイアウト調整を練習しました。
           </p>
         </div>
@@ -105,11 +118,31 @@
   </main>
 
   <!-- フッター -->
-  <footer class="footer footer-center p-6 bg-base-100 text-base-content border-t border-base-200">
+  <footer class="footer footer-center p-4 sm:p-6 bg-base-100 text-base-content border-t border-base-200 text-xs sm:text-sm">
     <aside>
       <p>© キム 2026</p>
     </aside>
   </footer>
 
+  <script>
+    // --- 1. もっと見るボタンの機能 ---
+    const moreBtn = document.getElementById('more-btn');
+    const moreText = document.getElementById('more-text');
+
+    moreBtn.addEventListener('click', () => {
+      const isHidden = moreText.classList.toggle('hidden');
+      moreBtn.textContent = isHidden ? 'もっと見る' : '閉じる';
+    });
+
+    // --- 2. いいねボタンの機能 ---
+    const likeBtn = document.getElementById('like-btn');
+    const likeCount = document.getElementById('like-count');
+    let count = 0;
+
+    likeBtn.addEventListener('click', () => {
+      count = count + 1;
+      likeCount.textContent = count;
+    });
+  </script>
 </body>
 </html>
